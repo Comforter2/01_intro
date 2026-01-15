@@ -45,17 +45,48 @@
 45/13
 
 ## Object classes
+a = 45/13
+a
+
+b = c(10, 15, 5)
+b
+
+c = "precision ag"
+c
 ### Data frame
+d = data.frame("number" = b, 
+               "id" = c)
+d
 
 ### Matrices
+e = matrix(c(b,b), ncol = 2)
+e
 
 ### Lists 
+f = list("number" = a, 
+         "numbers" = b,
+         "word" = c,
+         "data" = d)
+f
+
+class(f) # what is the class of object f?
+class(f$data) # what is the class of object data in f?
 
 ## Function
+mean(b)
 
 ## Argument
+help(mean) # to know the arguments in a function.
 
-## Package
+b2 = c(b, NA) # add NA to the b vector
+b2
+
+is.na(b2) # to confirm there is NA in the new vector
+
+mean(b2,
+     na.rm = TRUE) # new mean with the argument to remove NA
+
+## Pa"mean"## Package
 ## Install vs. load a package
 # install.packages("tibble")
 

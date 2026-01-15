@@ -88,29 +88,83 @@ mean(b2,
 
 ## Pa"mean"## Package
 ## Install vs. load a package
-# install.packages("tibble")
+install.packages("tibble")
+library(tibble)
 
 ## Let's install package tibble, then load it
 
 # 3) Creating a data set, exploring it ----
+intro = tribble(~name, ~height, ~favcrop,
+                "Ashton", 185, "broccoli",
+                "Priscila", 157, "cotton",
+                "Brandon", 180, "cotton",
+                "Chinonso", 180, "blueberries",
+                "Dare", 175, "citrus")
+
+class(intro) #the difference between a tibble and data frame is just how they print in the console.
+            #they are both dfs, and a tibble will show only the first 6 rows but df will give all
 
 # Check class, summary, and structure
+summary(intro)
+head(intro, n=2) # to print first 6 rows, n lets you decide the number or rows to print
+tail(intro, n=2)
 
 # Sampling the dataset
 # First row only
+intro[1, ]
 
 # First column only
+intro[ ,1]
 
 # Rows 1 to 3 and columns 1 to 3
+intro[1:3, 1:3]
 
 # Rows 1 and 3 and columns 1 and 3
+intro[c(1,3), c(1,3)]
 
 # 4) ggplot2 philosophy and plots ---- 
-#install.packages("ggplot2")
+install.packages("ggplot2")
 
 # Point
+x = height
+y = name
+color = favcrop
+
+library(ggplot2)
+
+ggplot(data = intro,
+       mapping = aes(x = height,
+                     y = name,
+                     shape = favcrop
+                     )
+       ) +
+  geom_label(aes(label = favcrop,
+                 colour = favcrop))+
+  geom_point()
 
 # Customizing
+ggplot(data = intro,
+       mapping = aes(x = height,
+                     y = name
+       )
+) +
+  geom_point(color = "blue",
+             size = 3,
+             shape = 6) 
+
+
+ggplot(data = intro,
+       mapping = aes(x = height,
+                     y = name,
+                     shape = favcrop,
+                     colour = favcrop
+       )
+) +
+  geom_point() +
+  scale_colour_viridis_d() +
+  theme_classic()
+
+ggsave("plot01.png")
 
 # Exporting
 

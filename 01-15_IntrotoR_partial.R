@@ -88,7 +88,7 @@ mean(b2,
 
 ## Pa"mean"## Package
 ## Install vs. load a package
-install.packages("tibble")
+#install.packages("tibble")
 library(tibble)
 
 ## Let's install package tibble, then load it
@@ -123,7 +123,7 @@ intro[1:3, 1:3]
 intro[c(1,3), c(1,3)]
 
 # 4) ggplot2 philosophy and plots ---- 
-install.packages("ggplot2")
+#install.packages("ggplot2")
 
 # Point
 x = height
@@ -180,7 +180,28 @@ ggsave("plot01.png")
 # Export your new version saving it as "A1_firstname_lastname.png"
 # Upload your new plot to eLC under "Assignment #1"
 
+ggplot(data = intro,
+       mapping = aes(x = height,
+                     y = name
+       )
+) +
+  geom_point(color = "blue",
+             size = 3,
+             shape = 6) 
 
+
+ggplot(data = intro,
+       mapping = aes(x = height,
+                     y = name,
+                     shape = favcrop,
+                     colour = favcrop
+       )
+) +
+  geom_point() +
+  scale_color_brewer() +
+  theme_bw()
+
+ggsave("A1_Comfort_Adegbenro.png")
 
 
 
